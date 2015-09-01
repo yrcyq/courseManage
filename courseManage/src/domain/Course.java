@@ -71,5 +71,17 @@ public class Course {
 	public int getCreditHourse(){
 		return creditHours;
 	}
-	
+	public void print(){
+		System.out.println(courseId);
+		System.out.println(name);
+		System.out.println(level);
+		System.out.println(time);
+		System.out.println(day);
+		System.out.println(instructor);
+		System.out.println(section);
+		System.out.println(limit);
+		System.out.println(registerNo);
+		System.out.println(creditHours);
+		System.out.println(departmentId);
+	}
 }

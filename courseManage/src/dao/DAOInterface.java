@@ -1,8 +1,11 @@
 package dao;
 
-	import domain.Admin;
-	import domain.Student;
-	import domain.Course;
+	import java.util.List;
+import java.util.Map;
+
+import domain.Admin;
+import domain.Student;
+import domain.Course;
 	
 	
 	public interface DAOInterface {
@@ -14,7 +17,7 @@ package dao;
 		 //find student by using username
 		 boolean findStudent(String username);
 		 
-		 Course findCourse(String courseId);
+		 List<Course> findCourse(Map<String,Object> info);
 		 boolean addCourse(Course course);
 	}
 

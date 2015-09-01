@@ -3,6 +3,9 @@ package daoImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
+import java.util.Map;
+
 import dao.DAOInterface;
 import domain.Admin;
 import domain.Course;
@@ -27,7 +30,7 @@ public class DAOImpl implements DAOInterface {
 			ps.setString(0, username);
 			ps.setString(1, password);
 			rs=ps.executeQuery();
-			return DAOUtil.rs2bean(rs, Admin.class);
+			return DAOUtil.rs2bean(rs, Admin.class).get(0);
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -48,7 +51,7 @@ public class DAOImpl implements DAOInterface {
 			ps.setString(0, username);
 			ps.setString(1, password);
 			rs=ps.executeQuery();
-			return DAOUtil.rs2bean(rs, Student.class);
+			return DAOUtil.rs2bean(rs, Student.class).get(0);
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -114,13 +117,13 @@ public class DAOImpl implements DAOInterface {
 	}
 
 	@Override
-	public boolean findStudent(String username) {
+	public boolean findStudent(String studentId) {
 		// TODO Auto-generated method stub
 		try{
 			conn=JdbcUtil.getConnection();
 			String sql="select * from Student where studentId=? ";
 			ps=conn.prepareStatement(sql);
-			ps.setString(0, username);
+			ps.setString(0, studentId);
 			rs=ps.executeQuery();
 			return rs.next();
 		}
@@ -134,13 +137,20 @@ public class DAOImpl implements DAOInterface {
 	}
 
 	@Override
-	public Course findCourse(String courseId) {
+	public List<Course> findCourse(Map<String,Object> info) {
 		// TODO Auto-generated method stub
+		StringBuilder sb=new StringBuilder("select * from Course where ");
+		int i=info.size();
+		for(Map.Entry<String,Object> e:info.entrySet()){
+			sb.append(e.getKey()+" = ");
+			if(--i>0)
+				sb.append(e.getValue()+" and ");
+			else
+				sb.append(e.getValue());
+		}
 		try{
 			conn=JdbcUtil.getConnection();
-			String sql="select * from Course where courseId=? ";
-			ps=conn.prepareStatement(sql);
-			ps.setString(0, courseId);
+			ps=conn.prepareStatement(sb.toString());
 			rs=ps.executeQuery();
 			return DAOUtil.rs2bean(rs,Course.class);
 		}
