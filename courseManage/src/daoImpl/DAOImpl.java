@@ -1,0 +1,186 @@
+package daoImpl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import dao.DAOInterface;
+import domain.Admin;
+import domain.Course;
+import domain.Student;
+import util.DAOUtil;
+
+public class DAOImpl implements DAOInterface {
+	private Connection conn;
+	private PreparedStatement ps;
+	private ResultSet rs;
+
+
+
+
+	@Override
+	public Admin findAdmin(String username, String password) {
+		// TODO Auto-generated method stub
+		try{
+			conn=JdbcUtil.getConnection();
+			String sql="select * from Admin where adminId=? and password=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(0, username);
+			ps.setString(1, password);
+			rs=ps.executeQuery();
+			return DAOUtil.rs2bean(rs, Admin.class);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			JdbcUtil.release(conn, ps, rs);
+		}
+		return null;
+	}
+
+	@Override
+	public Student findStudent(String username, String password) {
+		// TODO Auto-generated method stub
+		try{
+			conn=JdbcUtil.getConnection();
+			String sql="select * from Student where studentId=? and password=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(0, username);
+			ps.setString(1, password);
+			rs=ps.executeQuery();
+			return DAOUtil.rs2bean(rs, Student.class);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			JdbcUtil.release(conn, ps, rs);
+		}
+		return null;
+	}
+
+	@Override
+	public boolean addAdmin(Admin admin) {
+		// TODO Auto-generated method stub
+		try{
+			conn=JdbcUtil.getConnection();
+			String sql="insert into Admin values (?,?,?,?,?,?,?)";
+			ps=conn.prepareStatement(sql);
+			ps.setString(0, admin.getAdminId());
+			ps.setString(1, admin.getFname());
+			ps.setString(2, admin.getMname());
+			ps.setString(3, admin.getLname());
+			ps.setInt(4, admin.getDepartmentId());
+			ps.setInt(5,admin.getClearance());
+			ps.setString(6,admin.getPassword());
+			int num=ps.executeUpdate();
+			return num>0;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			JdbcUtil.release(conn, ps, rs);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean addStudent(Student student) {
+		// TODO Auto-generated method stub
+		try{
+			conn=JdbcUtil.getConnection();
+			String sql="insert into Student values (?,?,?,?,?,?,?,?,?)";
+			ps=conn.prepareStatement(sql);
+			ps.setString(0, student.getStudentId());
+			ps.setString(1, student.getFname());
+			ps.setString(2, student.getMname());
+			ps.setString(3, student.getLname());
+			ps.setBoolean(4, student.getIsGraduate());
+			ps.setString(5,student.getEnrollDate());
+			ps.setDouble(6,student.getGpa());
+			ps.setInt(7,student.getTrackId());
+			ps.setString(8,student.getPassword());
+			int num=ps.executeUpdate();
+			return num>0;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			JdbcUtil.release(conn, ps, rs);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean findStudent(String username) {
+		// TODO Auto-generated method stub
+		try{
+			conn=JdbcUtil.getConnection();
+			String sql="select * from Student where studentId=? ";
+			ps=conn.prepareStatement(sql);
+			ps.setString(0, username);
+			rs=ps.executeQuery();
+			return rs.next();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			JdbcUtil.release(conn, ps, rs);
+		}
+		return false;
+	}
+
+	@Override
+	public Course findCourse(String courseId) {
+		// TODO Auto-generated method stub
+		try{
+			conn=JdbcUtil.getConnection();
+			String sql="select * from Course where courseId=? ";
+			ps=conn.prepareStatement(sql);
+			ps.setString(0, courseId);
+			rs=ps.executeQuery();
+			return DAOUtil.rs2bean(rs,Course.class);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			JdbcUtil.release(conn, ps, rs);
+		}
+		return null;
+	}
+
+	@Override
+	public boolean addCourse(Course course) {
+		// TODO Auto-generated method stub
+		try{
+			conn=JdbcUtil.getConnection();
+			String sql="insert into Course values (?,?,?,?,?,?,?,?,?,?,?) ";
+			ps=conn.prepareStatement(sql);
+			ps.setString(0, course.getCourseId());
+			ps.setInt(1, course.getSection());
+			ps.setInt(2,course.getDepartmentId());
+			ps.setString(3,course.getName());
+			ps.setString(4, course.getInstructor());
+			ps.setString(5,course.getLevel());
+			ps.setInt(6, course.getLimit());
+			ps.setInt(7,course.getRegisterNo());
+			ps.setString(8,course.getTime());
+			ps.setString(9, course.getDay());
+			ps.setInt(10,course.getCreditHourse());
+			int num=ps.executeUpdate();
+			return num>0;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			JdbcUtil.release(conn, ps, rs);
+		}
+		return false;
+	}
+
+}
