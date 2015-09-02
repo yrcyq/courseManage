@@ -58,12 +58,17 @@ public class JdbcTest {
 		return res;
 	}
 	
-	public static void main(String[] args){
-//		Map<String,Object> info=new HashMap<>();
-//		//info.put("courseId"	, "5336");
-//		info.put("section",1);
-//		//info.put("departmentId", 3);
-//		findCourse(info);
-		test();
+	private static boolean updateStudentInfo(String string,
+			Map<String, Object> info) {
+		// TODO Auto-generated method stub
+		StringBuilder sb
 	}
+	
+	public static void main(String[] args){
+		Map<String,Object> info=new HashMap<>();
+		info.put("gpa", "3.77");
+		updateStudentInfo("user003000",info);
+	}
+
+	
 }

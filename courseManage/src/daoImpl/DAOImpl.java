@@ -21,13 +21,13 @@ public class DAOImpl implements DAOInterface {
 
 
 	@Override
-	public Admin findAdmin(String username, String password) {
+	public Admin findAdmin(String adminId, String password) {
 		// TODO Auto-generated method stub
 		try{
 			conn=JdbcUtil.getConnection();
 			String sql="select * from Admin where adminId=? and password=?";
 			ps=conn.prepareStatement(sql);
-			ps.setString(0, username);
+			ps.setString(0, adminId);
 			ps.setString(1, password);
 			rs=ps.executeQuery();
 			return DAOUtil.rs2bean(rs, Admin.class).get(0);
@@ -42,13 +42,13 @@ public class DAOImpl implements DAOInterface {
 	}
 
 	@Override
-	public Student findStudent(String username, String password) {
+	public Student findStudent(String studentId, String password) {
 		// TODO Auto-generated method stub
 		try{
 			conn=JdbcUtil.getConnection();
 			String sql="select * from Student where studentId=? and password=?";
 			ps=conn.prepareStatement(sql);
-			ps.setString(0, username);
+			ps.setString(0, studentId);
 			ps.setString(1, password);
 			rs=ps.executeQuery();
 			return DAOUtil.rs2bean(rs, Student.class).get(0);
@@ -117,7 +117,7 @@ public class DAOImpl implements DAOInterface {
 	}
 
 	@Override
-	public boolean findStudent(String studentId) {
+	public boolean findStudentIdExists(String studentId) {
 		// TODO Auto-generated method stub
 		try{
 			conn=JdbcUtil.getConnection();
@@ -189,6 +189,35 @@ public class DAOImpl implements DAOInterface {
 		}
 		finally{
 			JdbcUtil.release(conn, ps, rs);
+		}
+		return false;
+	}
+
+	@Override
+	public Student findStudentByAdmin(String studentId) {
+		// TODO Auto-generated method stub
+		try{
+			conn=JdbcUtil.getConnection();
+			String sql="select * from Student where studentId=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(0, studentId);
+			rs=ps.executeQuery();
+			return DAOUtil.rs2bean(rs, Student.class).get(0);
+		}
+		catch(Exception e){
+			throw new RuntimeException();
+		}
+		finally{
+			JdbcUtil.release(conn,ps,rs);
+		}
+	}
+
+	@Override
+	public boolean updateStudentInfo(String studentId, Map<String, Object> info) {
+		// TODO Auto-generated method stub
+		int i=info.size();
+		if(i>0){
+			 
 		}
 		return false;
 	}

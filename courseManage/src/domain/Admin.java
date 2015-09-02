@@ -4,7 +4,12 @@ import java.io.Serializable;
 
 public class Admin implements Serializable{
 	/**
-	 * 
+	 * clearance: 
+	 * 			1: see student profile and update student info;
+	 * 			2: register new student;
+	 * 			3: add courses;
+	 * 			4: add department;
+	 * 			5: add school;
 	 */
 	private static final long serialVersionUID = -747045332297400687L;
 	private String adminId,password,fname,mname,lname;
