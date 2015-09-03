@@ -61,7 +61,7 @@ public class AdminServiceImpl implements AdminServiceInterface {
 	@Override
 	public boolean updateStudentInfo(String studentId, Map<String, Object> info) {
 		// TODO Auto-generated method stub
-		return false;
+		return db.updateStudentInfo(studentId, info);
 	}
 
 }

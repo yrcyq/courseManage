@@ -3,6 +3,7 @@ package daoImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 
@@ -144,9 +145,9 @@ public class DAOImpl implements DAOInterface {
 		for(Map.Entry<String,Object> e:info.entrySet()){
 			sb.append(e.getKey()+" = ");
 			if(--i>0)
-				sb.append(e.getValue()+" and ");
+				sb.append("\""+e.getValue()+"\""+" and ");
 			else
-				sb.append(e.getValue());
+				sb.append("\""+e.getValue()+"\"");
 		}
 		try{
 			conn=JdbcUtil.getConnection();
@@ -205,19 +206,39 @@ public class DAOImpl implements DAOInterface {
 			return DAOUtil.rs2bean(rs, Student.class).get(0);
 		}
 		catch(Exception e){
-			throw new RuntimeException();
+			e.printStackTrace();
 		}
 		finally{
 			JdbcUtil.release(conn,ps,rs);
 		}
+		return null;
 	}
 
 	@Override
 	public boolean updateStudentInfo(String studentId, Map<String, Object> info) {
 		// TODO Auto-generated method stub
+		StringBuilder sb=new StringBuilder("update student set ");
 		int i=info.size();
-		if(i>0){
-			 
+		for(Map.Entry<String, Object> e:info.entrySet()){
+			sb.append(e.getKey() +" = ");
+			if(--i>0)
+				sb.append("\""+e.getValue()+"\""+" and ");
+			else
+				sb.append("\""+e.getValue()+"\"");
+		}
+		sb.append(" where studentId= \""+studentId+"\"");
+		System.out.println(sb.toString());
+		try{
+			conn=JdbcUtil.getConnection();
+			ps=conn.prepareStatement(sb.toString());
+			int no=ps.executeUpdate();
+			return no>0;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			JdbcUtil.release(conn, ps, rs);
 		}
 		return false;
 	}

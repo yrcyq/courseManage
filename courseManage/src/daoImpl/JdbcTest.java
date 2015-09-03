@@ -58,15 +58,39 @@ public class JdbcTest {
 		return res;
 	}
 	
-	private static boolean updateStudentInfo(String string,
+	private static boolean updateStudentInfo(String studentId,
 			Map<String, Object> info) {
 		// TODO Auto-generated method stub
-		StringBuilder sb
+		StringBuilder sb=new StringBuilder("update student set ");
+		int i=info.size();
+		for(Map.Entry<String, Object> e:info.entrySet()){
+			sb.append(e.getKey() +" = ");
+			if(--i>0)
+				sb.append("\""+e.getValue()+"\""+" and ");
+			else
+				sb.append("\""+e.getValue()+"\"");
+		}
+		sb.append(" where studentId= \""+studentId+"\"");
+		System.out.println(sb.toString());
+		Connection conn=null;
+		Statement st=null;
+		//ResultSet rs=null;
+		try{
+			conn=JdbcUtil.getConnection();
+			st=conn.createStatement();
+			int no=st.executeUpdate(sb.toString());
+			System.out.println(no);
+			return no>1;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 	public static void main(String[] args){
 		Map<String,Object> info=new HashMap<>();
-		info.put("gpa", "3.77");
+		info.put("password", "fuckyou123");
 		updateStudentInfo("user003000",info);
 	}
 
