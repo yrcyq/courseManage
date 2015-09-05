@@ -47,7 +47,7 @@ public class DAOImpl implements DAOInterface {
 		// TODO Auto-generated method stub
 		try{
 			conn=JdbcUtil.getConnection();
-			String sql="select * from Student where studentId=? and password=?";
+			String sql="select * from Student s, where studentId=? and password=?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(0, studentId);
 			ps.setString(1, password);

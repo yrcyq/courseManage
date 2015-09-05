@@ -1,5 +1,7 @@
 package serviceImpl;
 
+import java.util.List;
+
 import dao.DAOInterface;
 import daoImpl.DAOImpl;
 import domain.Course;
@@ -21,8 +23,10 @@ public class StudentServiceImpl implements StudentServiceInterface {
 	}
 
 	@Override
-	public boolean takeCourse(Course course) {
+	public boolean takeCourse(String studentId,Course course) {
 		// TODO Auto-generated method stub
+		List<Course> hasTaken=db.getStudentCourse( studentId);
+		List<Course> prerequist=db.getCoursePrerequist(course.getCourseId());
 		return false;
 	}
 

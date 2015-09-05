@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Student implements Serializable {
 
@@ -13,6 +14,15 @@ public class Student implements Serializable {
 	private double gpa;
 	private boolean isGraduate;
 	private int trackId;
+	private List<Course> coursesHasTaken;
+	
+	
+	public void setCoursesHasTaken(List<Course> coursesHasTaken){
+		this.coursesHasTaken=coursesHasTaken;
+	}
+	public List<Course> getCoursesHasTaken(){
+		return coursesHasTaken;
+	}
 	
 	public void setPassword(String password){
 		this.password=password;
