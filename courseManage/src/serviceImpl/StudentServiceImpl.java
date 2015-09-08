@@ -1,5 +1,6 @@
 package serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.DAOInterface;
@@ -25,9 +26,18 @@ public class StudentServiceImpl implements StudentServiceInterface {
 	@Override
 	public boolean takeCourse(String studentId,Course course) {
 		// TODO Auto-generated method stub
-		List<Course> hasTaken=db.getStudentCourse( studentId);
-		List<Course> prerequist=db.getCoursePrerequist(course.getCourseId());
+		List<String> hasTaken=db.findStudentCourseHistory( studentId);
+		List<String> prerequisite=getPrerequisite(course.getDescription());
 		return false;
 	}
-
+	
+	private List<String> getPrerequisite(String description){
+		List<String> prerequisite=new ArrayList<>();
+		if(description.indexOf("Prerequisite:")!=-1){
+			String[] courses=description.substring(description.indexOf("Prerequisite:")+1).split(",");
+			for(String str:courses)
+				prerequisite.add(str);
+		}
+		return prerequisite; 
+	}
 }

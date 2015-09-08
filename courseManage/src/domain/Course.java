@@ -2,14 +2,14 @@ package domain;
 
 public class Course {
 	public Course(){}
-	private String courseId,name,level,time,day,instructor;
-	private int section,limit,registerNo,creditHours,departmentId;
+	private String courseNumber,name,level,time,day,instructor,departmentName,schoolName,year,semester,description;
+	private int section,limit,registerNo,classCredits,classNumber;
 	
-	public void setCourseId(String courseId){
-		this.courseId=courseId;
+	public void setCourseNumber(String courseNumber){
+		this.courseNumber=courseNumber;
 	}
-	public String getCourseId(){
-		return courseId;
+	public String getCourseNumber(){
+		return courseNumber;
 	}
 	public void setName(String name){
 		this.name=name;
@@ -41,12 +41,12 @@ public class Course {
 	public String getInstructor(){
 		return instructor;
 	}
-	public void setDepartmentId(int departmentId){
-		this.departmentId=departmentId;
-	}
-	public int getDepartmentId(){
-		return departmentId;
-	}
+//	public void setDepartmentId(int departmentId){
+//		this.departmentId=departmentId;
+//	}
+//	public int getDepartmentId(){
+//		return departmentId;
+//	}
 	public void setSection(int section){
 		this.section=section;
 	}
@@ -65,14 +65,14 @@ public class Course {
 	public int getRegisterNo(){
 		return registerNo;
 	}
-	public void setCreditHours(int creditHours){
-		this.creditHours=creditHours;
+	public void setClassCredits(int classCredits){
+		this.classCredits=classCredits;
 	}
-	public int getCreditHourse(){
-		return creditHours;
+	public int getClassCreditse(){
+		return classCredits;
 	}
 	public void print(){
-		System.out.println(courseId);
+		System.out.println(courseNumber);
 		System.out.println(name);
 		System.out.println(level);
 		System.out.println(time);
@@ -81,7 +81,43 @@ public class Course {
 		System.out.println(section);
 		System.out.println(limit);
 		System.out.println(registerNo);
-		System.out.println(creditHours);
-		System.out.println(departmentId);
+		System.out.println(classCredits);
+		System.out.println(departmentName);
+	}
+	public String getDepartmentName() {
+		return departmentName;
+	}
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
+	public String getSchoolName() {
+		return schoolName;
+	}
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getSemester() {
+		return semester;
+	}
+	public void setSemester(String semester) {
+		this.semester = semester;
+	}
+	public int getClassNumber() {
+		return classNumber;
+	}
+	public void setClassNumber(int classNumber) {
+		this.classNumber = classNumber;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

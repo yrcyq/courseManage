@@ -86,11 +86,12 @@ CREATE TABLE `course` (
   `year` year(4) NOT NULL,
   `semester` varchar(6) NOT NULL,
   `classCredits` smallint(6) NOT NULL DEFAULT '3',
+  `description` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`classNumber`),
   UNIQUE KEY `courseNumber` (`courseNumber`,`section`),
   KEY `fk_course_department` (`departmentId`),
   CONSTRAINT `fk_course_department` FOREIGN KEY (`departmentId`) REFERENCES `department` (`departmentId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10056 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10057 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,9 +100,35 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (10000,'CS5301',1,8,'Professional and Technical Communication','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10001,'CS5303',1,8,'Computer Science 1','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10002,'CS5330',1,8,'Computer Science 2','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10003,'CS5333',1,8,'Discrete Structures','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10004,'CS5336',1,8,'Programming Projects in Java','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10005,'CS5343',1,8,'Algorithm Analysis and Data Structures','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10006,'CS5348',1,8,'Operating Systems Concepts','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10007,'CS5349',1,8,'Automata Theory','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10008,'CS5354',1,8,'Software Engineering','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10009,'CS5375',1,8,'Principles of UNIX','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10010,'CS5390',1,8,'Computer Networks','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10011,'CS6301',1,8,'Special Topics in Computer Science - Big Data Management and Analytics','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10012,'CS6304',1,8,'Computer Architecture','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10013,'CS6316',1,8,'Agile Methods','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10014,'CS6320',1,8,'Natural Language Processing','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10015,'CS6321',1,8,'Discourse Processing','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10016,'CS6322',1,8,'Information Retrieval','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10017,'CS6324',1,8,'Information Security','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10018,'CS6325',1,8,'Introduction to Bioinformatics','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10019,'CS6349',1,8,'Network Security','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10020,'CS6352',1,8,'Performance of Computer Systems and Networks','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10021,'CS6353',1,8,'Compiler Construction','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10022,'CS6354',1,8,'Advanced Software Engineering','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10023,'CS6356',1,8,'Software Maintenance, Evolution, and Re-Engineering','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10024,'CS6359',1,8,'Object-Oriented Analysis and Design','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10025,'CS6360',1,8,'Database Design','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10026,'CS6361',1,8,'Advanced Requirements Engineering','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10027,'CS6362',1,8,'Advanced Software Architecture and Design','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10028,'CS6363',1,8,'Design and Analysis of Computer Algorithms','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10029,'CS6364',1,8,'Artificial Intelligence','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10030,'CS6366',1,8,'Computer Graphics','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10031,'CS6367',1,8,'Software Testing and Verification','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10032,'CS6368',1,8,'Telecommunication Network Management','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10033,'CS6371',1,8,'Advanced Programming Languages','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10034,'CS6373',1,8,'Intelligent Systems','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10035,'CS6374',1,8,'Computational Logic','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10036,'CS6375',1,8,'Machine Learning','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10037,'CS6377',1,8,'Introduction to Cryptography','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10038,'CS6378',1,8,'Advanced Operating Systems','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10039,'CS6380',1,8,'Distributed Computing','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10040,'CS6381',1,8,'Combinatorics and Graph Algorithms','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10041,'CS6382',1,8,'Theory of Computation','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10042,'CS6383',1,8,'Computational Systems Biology','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10043,'CS6384',1,8,'Computer Vision','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10044,'CS6385',1,8,'Algorithmic Aspects of Telecommunication Networks','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10045,'CS6386',1,8,'Telecommunication Software Design','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10046,'CS6387',1,8,'Advanced Software Engineering Project','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10047,'CS6388',1,8,'Software Project Planning and Management','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10048,'CS6390',1,8,'Advanced Computer Networks','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10049,'CS6391',1,8,'Optical Networks','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10050,'CS6392',1,8,'Mobile Computing Systems','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10051,'CS6395',1,8,'Speech Recognition, Synthesis, and Understanding','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10052,'CS6396',1,8,'Real-Time Systems','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10053,'CS6397',1,8,'Synthesis and Optimization of High-Performance Systems','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10054,'CS6398',1,8,'DSP Architectures','abc','M.S',60,NULL,NULL,'',2014,'spring',3),(10055,'CS6399',1,8,'Parallel Architectures and Systems','abc','M.S',60,NULL,NULL,'',2014,'spring',3);
+INSERT INTO `course` VALUES (10000,'CS5301',1,8,'Professional and Technical Communication','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10001,'CS5303',1,8,'Computer Science 1','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10002,'CS5330',1,8,'Computer Science 2','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10003,'CS5333',1,8,'Discrete Structures','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10004,'CS5336',1,8,'Programming Projects in Java','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10005,'CS5343',1,8,'Algorithm Analysis and Data Structures','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10006,'CS5348',1,8,'Operating Systems Concepts','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10007,'CS5349',1,8,'Automata Theory','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10008,'CS5354',1,8,'Software Engineering','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10009,'CS5375',1,8,'Principles of UNIX','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10010,'CS5390',1,8,'Computer Networks','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10011,'CS6301',1,8,'Special Topics in Computer Science - Big Data Management and Analytics','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10012,'CS6304',1,8,'Computer Architecture','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10013,'CS6316',1,8,'Agile Methods','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10014,'CS6320',1,8,'Natural Language Processing','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10015,'CS6321',1,8,'Discourse Processing','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10016,'CS6322',1,8,'Information Retrieval','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10017,'CS6324',1,8,'Information Security','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10018,'CS6325',1,8,'Introduction to Bioinformatics','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10019,'CS6349',1,8,'Network Security','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10020,'CS6352',1,8,'Performance of Computer Systems and Networks','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10021,'CS6353',1,8,'Compiler Construction','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10022,'CS6354',1,8,'Advanced Software Engineering','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10023,'CS6356',1,8,'Software Maintenance, Evolution, and Re-Engineering','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10024,'CS6359',1,8,'Object-Oriented Analysis and Design','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10025,'CS6360',1,8,'Database Design','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10026,'CS6361',1,8,'Advanced Requirements Engineering','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10027,'CS6362',1,8,'Advanced Software Architecture and Design','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10028,'CS6363',1,8,'Design and Analysis of Computer Algorithms','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10029,'CS6364',1,8,'Artificial Intelligence','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10030,'CS6366',1,8,'Computer Graphics','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10031,'CS6367',1,8,'Software Testing and Verification','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10032,'CS6368',1,8,'Telecommunication Network Management','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10033,'CS6371',1,8,'Advanced Programming Languages','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10034,'CS6373',1,8,'Intelligent Systems','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10035,'CS6374',1,8,'Computational Logic','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10036,'CS6375',1,8,'Machine Learning','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10037,'CS6377',1,8,'Introduction to Cryptography','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10038,'CS6378',1,8,'Advanced Operating Systems','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10039,'CS6380',1,8,'Distributed Computing','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10040,'CS6381',1,8,'Combinatorics and Graph Algorithms','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10041,'CS6382',1,8,'Theory of Computation','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10042,'CS6383',1,8,'Computational Systems Biology','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10043,'CS6384',1,8,'Computer Vision','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10044,'CS6385',1,8,'Algorithmic Aspects of Telecommunication Networks','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10045,'CS6386',1,8,'Telecommunication Software Design','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10046,'CS6387',1,8,'Advanced Software Engineering Project','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10047,'CS6388',1,8,'Software Project Planning and Management','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10048,'CS6390',1,8,'Advanced Computer Networks','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10049,'CS6391',1,8,'Optical Networks','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10050,'CS6392',1,8,'Mobile Computing Systems','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10051,'CS6395',1,8,'Speech Recognition, Synthesis, and Understanding','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10052,'CS6396',1,8,'Real-Time Systems','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10053,'CS6397',1,8,'Synthesis and Optimization of High-Performance Systems','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10054,'CS6398',1,8,'DSP Architectures','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10055,'CS6399',1,8,'Parallel Architectures and Systems','abc','M.S',60,NULL,NULL,'',2014,'Spring',3,NULL),(10056,'CS6328',1,8,'Modeling and Simulation','Paul Fishwick','M.S',60,12,'00:00:00','',2015,'Fall',3,NULL);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `courseinfo`
+--
+
+DROP TABLE IF EXISTS `courseinfo`;
+/*!50001 DROP VIEW IF EXISTS `courseinfo`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `courseinfo` AS SELECT 
+ 1 AS `name`,
+ 1 AS `classNumber`,
+ 1 AS `courseNumber`,
+ 1 AS `section`,
+ 1 AS `instructor`,
+ 1 AS `level`,
+ 1 AS `limit`,
+ 1 AS `registerNo`,
+ 1 AS `time`,
+ 1 AS `day`,
+ 1 AS `year`,
+ 1 AS `semester`,
+ 1 AS `classCredits`,
+ 1 AS `departmentName`,
+ 1 AS `schoolName`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `degreeplan`
@@ -182,6 +209,7 @@ CREATE TABLE `hastaken` (
 
 LOCK TABLES `hastaken` WRITE;
 /*!40000 ALTER TABLE `hastaken` DISABLE KEYS */;
+INSERT INTO `hastaken` VALUES ('abc123000',10001,3,'A-',11.100);
 /*!40000 ALTER TABLE `hastaken` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -308,55 +336,8 @@ CREATE TABLE `istaking` (
 
 LOCK TABLES `istaking` WRITE;
 /*!40000 ALTER TABLE `istaking` DISABLE KEYS */;
+INSERT INTO `istaking` VALUES ('abc123000',10026),('user001000',10033),('user004000',10045);
 /*!40000 ALTER TABLE `istaking` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = gbk */ ;
-/*!50003 SET character_set_results = gbk */ ;
-/*!50003 SET collation_connection  = gbk_chinese_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger autoFillIsTaking
-     before insert on istaking
-     for each row
-     begin
-if new.attempted is null then set new.attempted=(select classCredits from course where course.classNumber=new.classNumber);
-end if;
-     end */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-
---
--- Table structure for table `prerequisite`
---
-
-DROP TABLE IF EXISTS `prerequisite`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `prerequisite` (
-  `courseNumber` varchar(10) NOT NULL,
-  `prerequisiteNumber` varchar(10) NOT NULL,
-  PRIMARY KEY (`courseNumber`,`prerequisiteNumber`),
-  KEY `fk_prerequisite_course_prerequisite` (`prerequisiteNumber`),
-  CONSTRAINT `fk_prerequisite_course_course` FOREIGN KEY (`courseNumber`) REFERENCES `course` (`courseNumber`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_prerequisite_course_prerequisite` FOREIGN KEY (`prerequisiteNumber`) REFERENCES `course` (`courseNumber`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `prerequisite`
---
-
-LOCK TABLES `prerequisite` WRITE;
-/*!40000 ALTER TABLE `prerequisite` DISABLE KEYS */;
-INSERT INTO `prerequisite` VALUES ('CS6359','CS5336'),('CS6320','CS5343'),('CS6360','CS5343'),('CS6364','CS5343'),('CS6366','CS5343'),('CS6316','CS5354'),('CS6359','CS5354'),('CS6390','CS5390');
-/*!40000 ALTER TABLE `prerequisite` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -442,7 +423,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES ('abc123000','Nicholas','','Ibarra',0,'2012-08-27',1,'Abc123',0.000,0,0.000),('user001000','John','','Snow',0,'2012-08-27',2,'Abc123',0.000,0,0.000),('user002000','John','','Doe',0,'2012-08-27',6,'Abc123',0.000,0,0.000),('user003000','Daisy','','Wang',0,'2012-08-27',3,'fuckyou123',0.000,0,0.000),('user004000','Hui','','Qing',0,'2012-08-27',4,'Abc123',0.000,0,0.000),('wxj140330','Weiwei','','Jia',0,'2012-08-27',5,'901009Jia',0.000,0,0.000);
+INSERT INTO `student` VALUES ('abc123000','Nicholas','','Ibarra',0,'2012-08-27',1,'Abc123',3.700,3,11.100),('user001000','John','','Snow',0,'2012-08-27',2,'Abc123',0.000,0,0.000),('user002000','John','','Doe',0,'2012-08-27',6,'Abc123',0.000,0,0.000),('user003000','Daisy','','Wang',0,'2012-08-27',3,'fuckyou123',0.000,0,0.000),('user004000','Hui','','Qing',0,'2012-08-27',4,'Abc123',0.000,0,0.000),('wxj140330','Weiwei','','Jia',0,'2012-08-27',5,'901009Jia',0.000,0,0.000);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -517,6 +498,24 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `courseinfo`
+--
+
+/*!50001 DROP VIEW IF EXISTS `courseinfo`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = gbk */;
+/*!50001 SET character_set_results     = gbk */;
+/*!50001 SET collation_connection      = gbk_chinese_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `courseinfo` AS select `natrual`.`name` AS `name`,`natrual`.`classNumber` AS `classNumber`,`natrual`.`courseNumber` AS `courseNumber`,`natrual`.`section` AS `section`,`natrual`.`instructor` AS `instructor`,`natrual`.`level` AS `level`,`natrual`.`limit` AS `limit`,`natrual`.`registerNo` AS `registerNo`,`natrual`.`time` AS `time`,`natrual`.`day` AS `day`,`natrual`.`year` AS `year`,`natrual`.`semester` AS `semester`,`natrual`.`classCredits` AS `classCredits`,`department`.`departmentName` AS `departmentName`,`school`.`schoolName` AS `schoolName` from (`course` `natrual` join (`department` join `school` on((`department`.`schoolId` = `school`.`schoolId`)))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `studentinfo`
 --
 
@@ -543,4 +542,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-09-04 18:06:41
+-- Dump completed on 2015-09-08  1:37:41

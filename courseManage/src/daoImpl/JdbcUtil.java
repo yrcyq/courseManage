@@ -1,12 +1,11 @@
 package daoImpl;
 
 import java.io.InputStream;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -18,21 +17,21 @@ public class JdbcUtil {
     
     static{
         try{
-            //读取db.properties文件中的数据库连接信息
+            //璇诲彇db.properties鏂囦欢涓殑鏁版嵁搴撹繛鎺ヤ俊鎭�
             InputStream in = JdbcUtil.class.getClassLoader().getResourceAsStream("db.properties");
             Properties prop = new Properties();
             prop.load(in);
             
-            //获取数据库连接驱动
+            //鑾峰彇鏁版嵁搴撹繛鎺ラ┍鍔�
             driver = prop.getProperty("driver");
-            //获取数据库连接URL地址
+            //鑾峰彇鏁版嵁搴撹繛鎺RL鍦板潃
             url = prop.getProperty("url");
-            //获取数据库连接用户名
+            //鑾峰彇鏁版嵁搴撹繛鎺ョ敤鎴峰悕
             username = prop.getProperty("username");
-            //获取数据库连接密码
+            //鑾峰彇鏁版嵁搴撹繛鎺ュ瘑鐮�
             password = prop.getProperty("password");
             
-            //加载数据库驱动
+            //鍔犺浇鏁版嵁搴撻┍鍔�
             Class.forName(driver);
             
         }catch (Exception e) {
@@ -42,10 +41,10 @@ public class JdbcUtil {
     
     /**
     * @Method: getConnection
-    * @Description: 获取数据库连接对象
-    * @Anthor:孤傲苍狼
+    * @Description: 鑾峰彇鏁版嵁搴撹繛鎺ュ璞�
+    * @Anthor:瀛ゅ偛鑻嶇嫾
     *
-    * @return Connection数据库连接对象
+    * @return Connection鏁版嵁搴撹繛鎺ュ璞�
     * @throws SQLException
     */ 
     public static Connection getConnection() throws SQLException{
@@ -54,9 +53,9 @@ public class JdbcUtil {
     
     /**
     * @Method: release
-    * @Description: 释放资源，
-    *     要释放的资源包括Connection数据库连接对象，负责执行SQL命令的Statement对象，存储查询结果的ResultSet对象
-    * @Anthor:孤傲苍狼
+    * @Description: 閲婃斁璧勬簮锛�
+    *     瑕侀噴鏀剧殑璧勬簮鍖呮嫭Connection鏁版嵁搴撹繛鎺ュ璞★紝璐熻矗鎵цSQL鍛戒护鐨凷tatement瀵硅薄锛屽瓨鍌ㄦ煡璇㈢粨鏋滅殑ResultSet瀵硅薄
+    * @Anthor:瀛ゅ偛鑻嶇嫾
     *
     * @param conn
     * @param st
@@ -65,7 +64,7 @@ public class JdbcUtil {
     public static void release(Connection conn,Statement st,ResultSet rs){
         if(rs!=null){
             try{
-                //关闭存储查询结果的ResultSet对象
+                //鍏抽棴瀛樺偍鏌ヨ缁撴灉鐨凴esultSet瀵硅薄
                 rs.close();
             }catch (Exception e) {
                 e.printStackTrace();
@@ -74,7 +73,7 @@ public class JdbcUtil {
         }
         if(st!=null){
             try{
-                //关闭负责执行SQL命令的Statement对象
+                //鍏抽棴璐熻矗鎵цSQL鍛戒护鐨凷tatement瀵硅薄
                 st.close();
             }catch (Exception e) {
                 e.printStackTrace();
@@ -83,7 +82,7 @@ public class JdbcUtil {
         
         if(conn!=null){
             try{
-                //关闭Connection数据库连接对象
+                //鍏抽棴Connection鏁版嵁搴撹繛鎺ュ璞�
                 conn.close();
             }catch (Exception e) {
                 e.printStackTrace();
