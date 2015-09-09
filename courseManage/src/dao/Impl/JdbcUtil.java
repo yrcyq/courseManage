@@ -1,4 +1,4 @@
-package daoImpl;
+package dao.Impl;
 
 import java.io.InputStream;
 import java.sql.PreparedStatement;

@@ -1,8 +1,8 @@
-package serviceImpl;
+package service.Impl;
 
 import java.util.Map;
 import dao.DAOInterface;
-import daoImpl.DAOImpl;
+import dao.Impl.DAOImpl;
 import domain.Admin;
 import domain.Course;
 import domain.Student;

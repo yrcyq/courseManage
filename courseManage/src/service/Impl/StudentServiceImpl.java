@@ -1,10 +1,10 @@
-package serviceImpl;
+package service.Impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import dao.DAOInterface;
-import daoImpl.DAOImpl;
+import dao.Impl.DAOImpl;
 import domain.Course;
 import domain.Student;
 import service.StudentServiceInterface;

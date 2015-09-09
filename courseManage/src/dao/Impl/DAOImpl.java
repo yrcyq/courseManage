@@ -1,4 +1,4 @@
-package daoImpl;
+package dao.Impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

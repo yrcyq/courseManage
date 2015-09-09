@@ -1,10 +1,10 @@
-package serviceImpl;
+package service.Impl;
 
 import java.util.List;
 import java.util.Map;
 
 import dao.DAOInterface;
-import daoImpl.DAOImpl;
+import dao.Impl.DAOImpl;
 import domain.Course;
 import service.CourseInterface;
 
