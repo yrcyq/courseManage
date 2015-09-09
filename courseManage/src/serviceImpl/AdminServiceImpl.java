@@ -27,35 +27,35 @@ public class AdminServiceImpl implements AdminServiceInterface {
 	// then admin have no right to add this course and return error;
 	public boolean addCourse(Admin admin, Course course) {
 		// TODO Auto-generated method stub
-		int adminDepartmentId=admin.getDepartmentId();
+		String adminDepartmentName=admin.getDepartmentName();
 		int clearance=admin.getClearance();
-		int courseDepartmentId=course.getDepartmentId();
+		String courseDepartmentName=course.getDepartmentName();
 		if(clearance<3)
 			return false;
-		else if(clearance==3&&adminDepartmentId!=courseDepartmentId)
+		else if(clearance==3&&adminDepartmentName!=courseDepartmentName)
 			return false;		
 		return db.addCourse(course);
 	}
 
 	@Override
 	//super admin have right to add new lower clearance admin 
-	public boolean addAdmin(Admin superAdmin, Admin lowerAdmin) {
+	public boolean addAdmin(Admin superAdmin, Admin lowerAdmin,String password) {
 		// TODO Auto-generated method stub
 		int superAdminClearance=superAdmin.getClearance();
 		int lowerAdminClearance=lowerAdmin.getClearance();
 		if(superAdminClearance<=lowerAdminClearance)
 			return false;
-		return db.addAdmin(lowerAdmin);
+		return db.addAdmin(lowerAdmin,password);
 	}
 
 	@Override
 	//admin who has clearance larger or equal than 2 have right to register new student;
-	public boolean addStudent(Admin admin, Student student) {
+	public boolean addStudent(Admin admin, Student student,String password) {
 		// TODO Auto-generated method stub
 		int clearance=admin.getClearance();
 		if(clearance<2)
 			return false;
-		return db.addStudent(student);
+		return db.addStudent(student,password);
 	}
 
 	@Override

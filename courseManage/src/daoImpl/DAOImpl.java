@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -310,6 +311,17 @@ public class DAOImpl implements DAOInterface {
 			ps.setString(0, studentId);
 			ps.setString(0, studentId);
 			rs=ps.executeQuery();
+			List<String> list=new ArrayList<>();
+			while(rs.next()){
+				list.add(rs.getString(0));
+			}
+			return list;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			JdbcUtil.release(conn, ps, rs);
 		}
 		return null;
 	}
